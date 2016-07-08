@@ -1,0 +1,21 @@
+{% extends 'content_base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-currentmemberspage{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        {% for mem in current_members %}
+            <div class='col-lg-3 col-md-4 col-sm-6'>
+                {% image mem.thumbnail original %}
+                <div class='member-namepart'>
+                    <h4 class='name'>{{ mem.user.get_full_name|upper }}</h4>
+                    <h5 class='part'>{{ mem.voice_part|upper }}</h5>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'content_base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-memberpage{% endblock %}
+
+{% block content %}
+
+<div class='row'>
+    {% image page.image original class='img-responsive col-sm-4' %}
+    <div class='col-sm-8'>
+        <div class='member-namepart'>
+            <h3 class='name'>{{ page.user.get_full_name|upper }}</h3>
+            <h5 class='part'>{{ page.voice_part|upper }}</h5>
+        </div>
+        <ul class='member-info'>
+            <li><b>Call him: </b>{{ page.nickname }}</li>
+            <li><b>Class year: </b>{{ page.graduation_year }}</li>
+            <li><b>Major: </b>{{ page.major }}</li>
+            <li><b>Hometown: </b>{{ page.hometown }}</li>
+            <li><b>About {{ page.user.first_name }}: </b>{{ page.bio }}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

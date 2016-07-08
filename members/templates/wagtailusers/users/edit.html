@@ -1,0 +1,18 @@
+{% extends "wagtailusers/users/edit.html" %}
+
+{% block extra_fields %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.img %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.nickname %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.graduation_year %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.major %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.voice_part %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.home_town %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.bio %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.phone %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.location %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.website %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.linkedin %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.facebook %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.instagram %}
+    {% include "wagtailadmin/shared/field_as_li.html" with field=form.current %}
+{% endblock extra_fields %}
