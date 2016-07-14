@@ -20,14 +20,16 @@ class CurrentMembersPage(Page):
     
     def get_context(self, request):
         context = super(CurrentMembersPage, self).get_context(request)
-        context['current_members'] = MemberPage.objects.filter(current=True)
+        context['current_members'] = MemberPage.objects.filter(current=True).order_by('graduation_year', 'user__first_name')
         return context
+        
+class AlumniPage(Page):
+    pass
 
 class MemberPage(Page):
     
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        primary_key=True,
         on_delete=models.PROTECT
     )
     current = models.BooleanField(default=False, verbose_name="current student")
@@ -39,16 +41,10 @@ class MemberPage(Page):
                         blank=True,
                         on_delete=models.SET_NULL,
                         related_name='+')
-    img = models.ImageField(upload_to='images/members', null=True, blank=True)
-    thumbnail = ImageSpecField(source='img',
-                                   processors=[ResizeToFill(100, 50)],
-                                   format='JPEG',
-                                   options={'quality': 60}
-                                )
     hometown = models.CharField(max_length=254, null=True, blank=True)
     major = models.CharField(max_length=254, blank=True)
     voice_part = models.CharField(max_length=254, blank=True)
-    bio = RichTextField(null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
     
     # Info only seen by authenticated users
     phone = models.CharField(max_length=20, blank=True, verbose_name="phone number")
@@ -97,30 +93,4 @@ class MemberPage(Page):
         ),
         FieldPanel('current'),
     ]
-    
-'''
-class Member(AbstractUser):
-    
-    nickname = models.CharField(max_length=254, null=True, blank=True)
-    graduation_year = models.PositiveIntegerField(validators=[MinValueValidator(1974)])
-    img = models.ImageField(upload_to='images/members', null=True, blank=True)
-    img_thumbnail = ImageSpecField(source='img',
-                                   processors=[ResizeToFill(100, 50)],
-                                   format='JPEG',
-                                   options={'quality': 60}
-                                )
-    home_town = models.CharField(max_length=254, null=True, blank=True)
-    major = models.CharField(max_length=254, blank=True)
-    voice_part = models.CharField(max_length=254, blank=True)
-    current = models.BooleanField(default=False)
-    bio = models.TextField(null=True, blank=True)
-    
-    # Info only seen by authenticated users
-    phone = models.CharField(max_length=20, blank=True, verbose_name="phone number")
-    location = models.CharField(max_length=255, blank=True)
-    website = models.URLField(null=True, blank=True)
-    linkedin = models.URLField(null=True, blank=True)
-    facebook = models.URLField(null=True, blank=True)
-    instagram = models.URLField(null=True, blank=True)
-'''
     

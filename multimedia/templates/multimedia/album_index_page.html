@@ -1,0 +1,13 @@
+{% extends 'content_base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+    {% for album in self.albums %}
+        <a href="{{ album.url }}" class="no-decoration col-md-3 col-sm-2">
+            {% image album.image fill-400x400-c70 class='img-responsive center-block' %}
+        </a>
+    {% endfor %}
+
+{% endblock %}

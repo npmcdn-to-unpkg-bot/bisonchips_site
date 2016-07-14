@@ -46,17 +46,22 @@ WAGTAIL_APPS = (
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
+    'wagtail.contrib.wagtailstyleguide',
 )
 
 THIRD_PARTY_APPS = (
     'modelcluster',
-    'taggit'
+    'taggit',
+    'wagtailmedia'
 )
 
 MY_APPS = (
     'home',
     'search',
-    'members'
+    'members',
+    'bisonchips_site',
+    'informational',
+    'multimedia'
 )
 
 INSTALLED_APPS = DJANGO_APPS + WAGTAIL_APPS + THIRD_PARTY_APPS + MY_APPS
@@ -90,6 +95,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bisonchips_site.context_processors.google_analytics'
             ],
         },
     },
@@ -114,7 +120,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -145,6 +151,7 @@ MEDIA_URL = '/media/'
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "bisonchips_site"
+WAGTAILMEDIA_MEDIA_MODEL = "multimedia.ChipsMedia"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash

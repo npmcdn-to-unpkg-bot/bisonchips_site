@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+<a href="{{ event.url }}" class='no-decoration'>
+<table class='event-listing'>
+    <tr>
+        <td><b>{{ event.date|date:"F j, Y" }}</b></td>
+        <td><b>{{ event.title }}</b></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><p>{{ event.preview }}</p></td>
+    </tr> 
+</table>
+</a>

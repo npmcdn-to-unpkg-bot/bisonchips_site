@@ -95,12 +95,22 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-html { 
+@font-face {
+    font-family: "Bebas Neue";
+    src: url(../fonts/BebasNeue.otf) format("truetype");
+}
+
+body { 
     height: 100%;
 }
 
 body {
     min-height: 100%;
+}
+
+.bebas {
+    font-family: "Bebas Neue", "Helvetica Neue", Helvetica, Arial;
+    padding-top: .4em;
 }
 
 img.bg-img {
@@ -116,6 +126,8 @@ img.bg-img {
   position: fixed;
   top: 0;
   left: 0;
+  
+  z-index: -1;
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -125,11 +137,49 @@ img.bg-img {
   }
 }
 
+.name, .part {
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 2px 0px 2px 0px;
+}
 
+.navbar {
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    border-radius: 0px;
+}
 
+.navbar a {
+    color: white;
+}
 
+.navbar .icon-bar {
+    background-color: white;
+}
 
+.no-decoration {
+    text-decoration: none !important;
+    color: inherit;
+}
 
+.no-decoration a:hover, .no-decoration a:active {
+    background-color: transparent !important;
+}
+
+.member-container {
+    margin-bottom: 25px;
+}
+
+.member-info {
+    margin: 10px 0px 10px 0px;
+}
+
+.event-listing td {
+    padding-right: 2em;
+}
 
 
 

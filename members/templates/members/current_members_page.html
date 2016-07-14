@@ -1,21 +1,39 @@
 {% extends 'content_base.html' %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://npmcdn.com/jquery-gray@1.4.5/css/gray.min.css">
+{% endblock %}
 
 {% block body_class %}template-currentmemberspage{% endblock %}
 
 {% block content %}
 
     <div class="row">
-        {% for mem in current_members %}
-            <div class='col-lg-3 col-md-4 col-sm-6'>
-                {% image mem.thumbnail original %}
-                <div class='member-namepart'>
-                    <h4 class='name'>{{ mem.user.get_full_name|upper }}</h4>
-                    <h5 class='part'>{{ mem.voice_part|upper }}</h5>
+        {% with h=300 w=240 %}
+            {% for mem in current_members %}
+                <div class='col-lg-3 col-md-4 col-sm-6'>
+                    <a href="{% pageurl mem %}" class='no-decoration'>
+                        <div style="width: {{ w }}px" class="center-block grayscale grayscale-fade member-container">
+                            {% image mem.image fill-240x300-c70 class="center-block" %}
+                            <div class='member-namepart'>
+                                <h1 class='name bebas'>{{ mem.user.get_full_name|upper }}</h1>
+                                <h4 class='part bebas'>{{ mem.voice_part }}</h4>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% endwith %}
     </div>
 
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/vendor/jquery.fittext.js' %}"></script>
+<script>
+  jQuery(".name").fitText(0.6);
+</script>
+ <script src="https://npmcdn.com/jquery-gray@1.4.5/js/jquery.gray.min.js"></script>
 {% endblock %}

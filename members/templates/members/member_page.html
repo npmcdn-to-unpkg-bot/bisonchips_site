@@ -7,19 +7,21 @@
 {% block content %}
 
 <div class='row'>
-    {% image page.image original class='img-responsive col-sm-4' %}
+    <div class='col-sm-4'>
+    {% image page.image fill-400x500-c70 class='img-responsive center-block' %}
+    </div>
     <div class='col-sm-8'>
         <div class='member-namepart'>
-            <h3 class='name'>{{ page.user.get_full_name|upper }}</h3>
-            <h5 class='part'>{{ page.voice_part|upper }}</h5>
+            <h1 class='name bebas'>{{ page.user.get_full_name|upper }}</h1>
+            <h4 class='part bebas'>{{ page.voice_part }}</h4>
         </div>
-        <ul class='member-info'>
-            <li><b>Call him: </b>{{ page.nickname }}</li>
-            <li><b>Class year: </b>{{ page.graduation_year }}</li>
-            <li><b>Major: </b>{{ page.major }}</li>
-            <li><b>Hometown: </b>{{ page.hometown }}</li>
-            <li><b>About {{ page.user.first_name }}: </b>{{ page.bio }}</li>
-        </ul>
+        <div class='member-info'>
+            <p><b>Call him: </b>{{ page.nickname }}</p>
+            <p><b>Class year: </b>{{ page.graduation_year }}<p>
+            <p><b>Major: </b>{{ page.major }}</p>
+            <p><b>Hometown: </b>{{ page.hometown }}</p>
+            <p><b>About {{ page.user.first_name }}: </b>{{ page.bio }}</p>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 
+{% load bisonchips_tags wagtailcore_tags %}
+
 {% block body %}
 
-<div class='container-fluid'>
+
+    {% block navbar %}
+        {% get_site_root as site_root %}
+        {% top_menu parent=site_root calling_page=self %}
+    {% endblock %}
     
-    <!-- Put NavBar Here -->
+<div class='container'>
     
-    <h1>{% page.title %}</h1>
+    <h1 class='bebas page-heading'>{{ page.title|upper }}</h1>
     
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 </div>
 
 {% endblock %}

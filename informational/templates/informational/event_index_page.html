@@ -1,0 +1,18 @@
+{% extends 'content_base.html' %}
+
+{% block body_class %}template-eventindexpage{% endblock %}
+
+{% block content %}
+    <div class='events-container'>
+        <h4>Upcoming</h4>
+        {% for event in page.upcoming_events %}
+            {% include 'includes/event_listing.html' %}
+        {% endfor %}
+    </div>
+    <div class='events-container'>
+        <h4>Past</h4>
+        {% for event in page.past_events %}
+            {% include 'includes/event_listing.html' %}
+        {% endfor %}
+    </div>
+{% endblock %}
